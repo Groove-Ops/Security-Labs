@@ -7,9 +7,9 @@
 ## Índice
 
 1. [LinEnum](#linenum)
-2. [SUID / SGID](#suid--sgid)
+2. [SUID / SGID](#suid-sgid)
 3. [Sudo Misconfigurations](#sudo-misconfigurations)
-4. [Cron Jobs](#cron-jobs)
+4. [Cron Jobs](#cron jobs)
 5. [PATH Hijacking](#path-hijacking)
 6. [/etc/passwd Escribible](#etcpasswd-escribible)
 
@@ -39,12 +39,12 @@ ip a | grep tun0
 
 **Secciones clave del output:**
 
-|Sección|Qué buscar|
-|---|---|
-|`[+] We can sudo without supplying a password`|Sudo mal configurado|
-|`[+] SUID files`|Binarios con SUID activado|
-|`[+] Crontab contents`|Tareas programadas|
-|`[+] World-writable files`|Archivos escribibles por cualquier usuario|
+| Sección                                        | Qué buscar                                 |
+| ---------------------------------------------- | ------------------------------------------ |
+| `[+] We can sudo without supplying a password` | Sudo mal configurado                       |
+| `[+] SUID files`                               | Binarios con SUID activado                 |
+| `[+] Crontab contents`                         | Tareas programadas                         |
+| `[+] World-writable files`                     | Archivos escribibles por cualquier usuario |
 
 > Aunque uses LinEnum, debes saber replicar cada comprobación manualmente. En un pentest real puede que no puedas subir herramientas.
 
