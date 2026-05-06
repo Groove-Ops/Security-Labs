@@ -9,7 +9,7 @@
 1. [LinEnum](#linenum)
 2. [SUID / SGID](#suid-sgid)
 3. [Sudo Misconfigurations](#sudo-misconfigurations)
-4. [Cron Jobs](#cron jobs)
+4. [Cron Jobs](#cron-jobs)
 5. [PATH Hijacking](#path-hijacking)
 6. [/etc/passwd Escribible](#etcpasswd-escribible)
 
