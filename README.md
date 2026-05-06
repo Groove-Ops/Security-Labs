@@ -11,11 +11,10 @@ Mi enfoque se basa en la metodología, la persistencia y el análisis crítico, 
 ### 🏠 Infrastructure & Home Labs
 *   **[Active Directory Home Lab](https://github.com/Groove-Ops/active-directory-home-lab.git)**: Despliegue y securización de un entorno corporativo Windows Server desde cero.
 
-### 🧪 Training Platforms (Writeups)
-| Platform | Lab Name | Difficulty | Key Focus |
-| :--- | :--- | :--- | :--- |
-| **TryHackMe** | [Fowsniff](./TryHackMe/Fowsniff/) | Easy/Medium | OSINT, POP3 Bruteforce, Python RevShell |
-
+| Platform | Lab Name | Difficulty | Key Focus | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **TryHackMe** | [Fowsniff](./TryHackMe/Fowsniff/) | Easy/Medium | OSINT, POP3 Bruteforce, Python RevShell | ✅ |
+| **TryHackMe** | [Common Linux PrivEsc](./TryHackMe/Common-Linux-PrivEsc/) | Easy | SUID, Sudo, Cron, PATH Hijacking, /etc/passwd | ✅ |
 ---
 
 ## 🛠️ Toolset & Skills
