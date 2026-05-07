@@ -16,7 +16,7 @@ Mi enfoque se basa en la metodología, la persistencia y el análisis crítico, 
 | **TryHackMe** | [Fowsniff](./TryHackMe/Fowsniff/) | Easy/Medium | OSINT, POP3 Bruteforce, Python RevShell | ✅ |
 | **TryHackMe** | [Common Linux PrivEsc](./TryHackMe/Common-Linux-PrivEsc/) | Easy | SUID, Sudo, Cron, PATH Hijacking, /etc/passwd | ✅ |
 ---
-
+| **TryHackMe** | [Basic Pentesting](./TryHackMe/Basic-Pentesting/) | Easy | SMB Enum, SSH Bruteforce, RSA Key Cracking | ✅ |
 ## 🛠️ Toolset & Skills
 
 - **Recon & Enumeration:** Nmap, Gobuster, Nikto.
