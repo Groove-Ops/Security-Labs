@@ -1,31 +1,52 @@
 # 🛡️ Security-Labs
 
-Este repositorio es mi laboratorio personal de aprendizaje y experimentación en ciberseguridad. Aquí documento el proceso técnico, los desafíos y las soluciones de diversas máquinas y entornos controlados.
+Personal pentesting lab — write-ups, methodology notes, and proof-of-concept work across CTF platforms and self-hosted environments. Every machine documented here was rooted manually, no automated exploit chains.
 
-Mi enfoque se basa en la metodología, la persistencia y el análisis crítico, buscando siempre entender el porqué detrás de cada vulnerabilidad.
-
----
-
-## 🚀 Projects & Labs
-
-### 🏠 Infrastructure & Home Labs
-*   **[Active Directory Home Lab](https://github.com/Groove-Ops/active-directory-home-lab.git)**: Despliegue y securización de un entorno corporativo Windows Server desde cero.
-
-| Platform       | Lab Name                                                  | Difficulty  | Key Focus                                     | Status |
-| :------------- | :-------------------------------------------------------- | :---------- | :-------------------------------------------- | :----- |
-| **TryHackMe**  | [Fowsniff](./TryHackMe/Fowsniff/)                         | Easy/Medium | OSINT, POP3 Bruteforce, Python RevShell       | ✅      |
-| **TryHackMe**  | [Common Linux PrivEsc](./TryHackMe/Common-Linux-PrivEsc/) | Easy        | SUID, Sudo, Cron, PATH Hijacking, /etc/passwd | ✅      |
-| **TryHackMe**  | [Basic Pentesting](./TryHackMe/Basic-Pentesting/)         | Easy        | SMB Enum, SSH Bruteforce, RSA Key Cracking    | ✅      |
-| **DockerLabs** | [NodeClimb](./DockerLabs/NodeClimb/)                      | Easy        | Anonymous FTP, zip2john, sudo node GTFOBins   | ✅      |
-
-## 🛠️ Toolset & Skills
----
-- **Recon & Enumeration:** Nmap, Gobuster, Nikto.
-- **Exploitation:** Metasploit Framework, Python Scripting, Netcat.
-- **Active Directory:** Group Policy, Kerberos, PrivEsc.
-- **Analysis:** Hash cracking, OSINT, Log Analysis.
+Focus: enumeration discipline, privilege escalation paths, and understanding *why* a vulnerability exists, not just that it does.
 
 ---
 
-## 🧠 Learning Journey
-Actualmente preparándome para certificaciones profesionales y profundizando en tácticas de Red Team y Blue Team.
+## Labs & Write-ups
+
+| Machine | Platform | Difficulty | Key Techniques | Status |
+| :------ | :------- | :--------- | :------------- | :----- |
+| [Fowsniff](./TryHackMe/Fowsniff/) | TryHackMe | Easy/Medium | OSINT, POP3 bruteforce, Python reverse shell | ✅ |
+| [Common Linux PrivEsc](./TryHackMe/Common-Linux-PrivEsc/) | TryHackMe | Easy | SUID, sudo abuse, cron jobs, PATH hijacking, /etc/passwd write | ✅ |
+| [Basic Pentesting](./TryHackMe/Basic-Pentesting/) | TryHackMe | Easy | SMB enumeration, SSH bruteforce, RSA key cracking | ✅ |
+| [NodeClimb](./DockerLabs/NodeClimb/) | DockerLabs | Easy | Anonymous FTP, zip2john, sudo node GTFOBins | ✅ |
+
+---
+
+## Toolset
+
+| Category | Tools |
+| :------- | :---- |
+| Recon & Enumeration | Nmap, Gobuster, enum4linux, smbclient |
+| Exploitation | Metasploit, Netcat, Python scripting |
+| Credential Attacks | Hydra, John the Ripper, rockyou / SecLists |
+| Active Directory | BloodHound (learning), Kerberos abuse, GPO analysis |
+| Environment | Fedora, Distrobox (Kali), OpenVPN |
+
+---
+
+## Current Focus
+
+Working through [TryHackMe](https://tryhackme.com) learning paths while building toward **CompTIA Security+**. Next milestone: HackTheBox after cert.
+
+Longer-term target: Jr. Sysadmin or SOC Analyst role, with a preference for offensive work.
+
+---
+
+## Related Repos
+
+| Repo | Description |
+| :--- | :---------- |
+| [Active Directory Home Lab](https://github.com/Groove-Ops/active-directory-home-lab.git) | AD deployment from scratch — GPO hardening, Kerberos, PrivEsc paths |
+
+---
+
+## Notes on Methodology
+
+Write-ups here follow a consistent structure: recon → enumeration → foothold → post-exploitation → lessons learned. The goal isn't just to document *what* worked — it's to explain *why* the attack surface existed and what a defender would need to fix.
+
+Notes are also kept locally in Obsidian for faster iteration during active labs.
