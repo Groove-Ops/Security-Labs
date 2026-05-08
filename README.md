@@ -41,7 +41,7 @@ Longer-term target: Jr. Sysadmin or SOC Analyst role, with a preference for offe
 
 | Repo | Description |
 | :--- | :---------- |
-| [Active Directory Home Lab](https://github.com/Groove-Ops/active-directory-home-lab.git) | AD deployment from scratch — GPO hardening, Kerberos, PrivEsc paths |
+| [Active Directory Home Lab](https://github.com/GrooveRoot/active-directory-home-lab.git) | AD deployment from scratch — GPO hardening, Kerberos, PrivEsc paths |
 
 ---
 
