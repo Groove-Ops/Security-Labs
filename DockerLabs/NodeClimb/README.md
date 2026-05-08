@@ -1,6 +1,6 @@
 # NodeClimb — DockerLabs Write-up
 
-**Platform:** DockerLabs (https://dockerlabs.es/) 
+**Platform:** DockerLabs (https://dockerlabs.es/)  
 **Difficulty:** Easy  
 **Date:** 08/05/2026  
 **OS:** Linux  
