@@ -11,12 +11,13 @@ Mi enfoque se basa en la metodología, la persistencia y el análisis crítico, 
 ### 🏠 Infrastructure & Home Labs
 *   **[Active Directory Home Lab](https://github.com/Groove-Ops/active-directory-home-lab.git)**: Despliegue y securización de un entorno corporativo Windows Server desde cero.
 
-| Platform | Lab Name | Difficulty | Key Focus | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **TryHackMe** | [Fowsniff](./TryHackMe/Fowsniff/) | Easy/Medium | OSINT, POP3 Bruteforce, Python RevShell | ✅ |
-| **TryHackMe** | [Common Linux PrivEsc](./TryHackMe/Common-Linux-PrivEsc/) | Easy | SUID, Sudo, Cron, PATH Hijacking, /etc/passwd | ✅ |
-| **TryHackMe** | [Basic Pentesting](./TryHackMe/Basic-Pentesting/) | Easy | SMB Enum, SSH Bruteforce, RSA Key Cracking | ✅ |
-| **DockerLabs** | [NodeClimb](./DockerLabs/NodeClimb/) | Easy | Anonymous FTP, zip2john, sudo node GTFOBins | ✅ |
+| Platform       | Lab Name                                                  | Difficulty  | Key Focus                                     | Status |
+| :------------- | :-------------------------------------------------------- | :---------- | :-------------------------------------------- | :----- |
+| **TryHackMe**  | [Fowsniff](./TryHackMe/Fowsniff/)                         | Easy/Medium | OSINT, POP3 Bruteforce, Python RevShell       | ✅      |
+| **TryHackMe**  | [Common Linux PrivEsc](./TryHackMe/Common-Linux-PrivEsc/) | Easy        | SUID, Sudo, Cron, PATH Hijacking, /etc/passwd | ✅      |
+| **TryHackMe**  | [Basic Pentesting](./TryHackMe/Basic-Pentesting/)         | Easy        | SMB Enum, SSH Bruteforce, RSA Key Cracking    | ✅      |
+| **DockerLabs** | [NodeClimb](./DockerLabs/NodeClimb/)                      | Easy        | Anonymous FTP, zip2john, sudo node GTFOBins   | ✅      |
+
 ## 🛠️ Toolset & Skills
 ---
 - **Recon & Enumeration:** Nmap, Gobuster, Nikto.
