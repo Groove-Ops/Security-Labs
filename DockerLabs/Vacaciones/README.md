@@ -4,7 +4,7 @@
 **Difficulty:** Very Easy  
 **Category:** Linux, SSH, Brute Force, Privilege Escalation  
 **Date:** 2026-05-09  
-**Author:** Groove-Ops
+**Author:** GrooveRoot
 
 ---
 
@@ -143,4 +143,4 @@ whoami
 
 ---
 
-_Write-up by [Groove-Ops](https://github.com/Groove-Ops)_
+_Write-up by [GrooveRoot](https://github.com/GrooveRoot)_
