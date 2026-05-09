@@ -8,12 +8,12 @@ Focus: enumeration discipline, privilege escalation paths, and understanding *wh
 
 ## Labs & Write-ups
 
-| Machine | Platform | Difficulty | Key Techniques | Status |
-| :------ | :------- | :--------- | :------------- | :----- |
-| [Fowsniff](./TryHackMe/Fowsniff/) | TryHackMe | Easy/Medium | OSINT, POP3 bruteforce, Python reverse shell | ✅ |
-| [Common Linux PrivEsc](./TryHackMe/Common-Linux-PrivEsc/) | TryHackMe | Easy | SUID, sudo abuse, cron jobs, PATH hijacking, /etc/passwd write | ✅ |
-| [Basic Pentesting](./TryHackMe/Basic-Pentesting/) | TryHackMe | Easy | SMB enumeration, SSH bruteforce, RSA key cracking | ✅ |
-| [NodeClimb](./DockerLabs/NodeClimb/) | DockerLabs | Easy | Anonymous FTP, zip2john, sudo node GTFOBins | ✅ |
+| Machine                                                   | Platform   | Difficulty  | Key Techniques                                                 | Status |
+| :-------------------------------------------------------- | :--------- | :---------- | :------------------------------------------------------------- | :----- |
+| [Fowsniff](./TryHackMe/Fowsniff/)                         | TryHackMe  | Easy/Medium | OSINT, POP3 bruteforce, Python reverse shell                   | ✅      |
+| [Common Linux PrivEsc](./TryHackMe/Common-Linux-PrivEsc/) | TryHackMe  | Easy        | SUID, sudo abuse, cron jobs, PATH hijacking, /etc/passwd write | ✅      |
+| [Basic Pentesting](./TryHackMe/Basic-Pentesting/)         | TryHackMe  | Easy        | SMB enumeration, SSH bruteforce, RSA key cracking              | ✅      |
+| [NodeClimb](./DockerLabs/NodeClimb/)                      | DockerLabs | Easy        | Anonymous FTP, zip2john, sudo node GTFOBins                    | ✅      |
 
 ---
 
