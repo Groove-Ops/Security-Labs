@@ -4,7 +4,7 @@
 **Difficulty:** Very Easy  
 **Category:** Linux, SSH, Brute Force, Privilege Escalation  
 **Date:** 2026-05-09  
-**Author:** Room: Romabri, WriteUp: GrooveRoot
+**Author:** Lab: Romabri, WriteUp: GrooveRoot
 
 ---
 
