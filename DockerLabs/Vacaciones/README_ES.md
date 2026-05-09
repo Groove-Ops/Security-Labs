@@ -4,7 +4,7 @@
 **Dificultad:** Muy Fácil  
 **Categoría:** Linux, SSH, Fuerza Bruta, Escalada de Privilegios  
 **Fecha:** 2026-05-09  
-**Autor:** GrooveRoot
+**Autor:** Lab: Romabri, WriteUp: GrooveRoot
 
 ---
 
