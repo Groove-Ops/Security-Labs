@@ -33,7 +33,7 @@ Focus: enumeration discipline, privilege escalation paths, and understanding *wh
 
 Working through [TryHackMe](https://tryhackme.com) learning paths while building toward **CompTIA Security+**. Next milestone: HackTheBox after cert.
 
-Longer-term target: Jr. Sysadmin or SOC Analyst role, with a preference for offensive work.
+Longer-term target: Jr. Pentester or SOC Analyst role, with a preference for offensive work.
 
 ---
 
