@@ -15,7 +15,8 @@ Focus: enumeration discipline, privilege escalation paths, and understanding *wh
 | [Basic Pentesting](./TryHackMe/Basic-Pentesting/)         | TryHackMe  | Easy        | SMB enumeration, SSH bruteforce, RSA key cracking                 | ✅      |
 | [NodeClimb](./DockerLabs/NodeClimb/)                      | DockerLabs | Easy        | Anonymous FTP, zip2john, sudo node GTFOBins                       | ✅      |
 | [Vacaciones](./DockerLabs/Vacaciones/)                    | DockerLabs | Very Easy   | SSH bruteforce, user pivoting, sudo ruby GTFOBins                 | ✅      |
-| [Anonforce](./TryHackme/Anonforce/)                       | TryHackMe  | Easy        | Anonymous FTP, GPG/PGP decryption, hash cracking (John + rockyou) | ✅      |
+| [Anonforce](./TryHackMe/Anonforce/)                       | TryHackMe  | Easy        | Anonymous FTP, GPG/PGP decryption, hash cracking (John + rockyou) | ✅      |
+| [Thompson](./TryHackMe/Thompson/)                         | TryHackMe  | Easy        | Apache Tomcat default creds · WAR reverse shell · Cronjob abuse   | ✅      |
 |                                                           |            |             |                                                                   |        |
 
 
