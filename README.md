@@ -15,7 +15,9 @@ Focus: enumeration discipline, privilege escalation paths, and understanding *wh
 | [Basic Pentesting](./TryHackMe/Basic-Pentesting/)         | TryHackMe  | Easy        | SMB enumeration, SSH bruteforce, RSA key cracking              | ✅      |
 | [NodeClimb](./DockerLabs/NodeClimb/)                      | DockerLabs | Easy        | Anonymous FTP, zip2john, sudo node GTFOBins                    | ✅      |
 | [Vacaciones](./DockerLabs/Vacaciones/)                    | DockerLabs | Very Easy   | SSH bruteforce, user pivoting, sudo ruby GTFOBins              | ✅      |
----
+| [Anonftp](TryHackme)                                      |            |             |                                                                |        |
+|                                                           |            |             |                                                                |        |
+
 
 ## Toolset
 
