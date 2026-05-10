@@ -28,7 +28,7 @@
 sudo nmap -sS -sV -sC -T4 -oA vacaciones 172.17.0.2
 ```
 
-![Resultado Nmap](assets/2.png)
+![Resultado Nmap](DockerLabs/Vacaciones/assets/2.png)
 
 **Puertos abiertos:**
 
@@ -49,7 +49,7 @@ sudo nmap -sS -sV -sC -T4 -oA vacaciones 172.17.0.2
 curl http://172.17.0.2
 ```
 
-![Respuesta curl](assets/1.png)
+![Respuesta curl](DockerLabs/Vacaciones/assets/1.png)
 
 El servidor devuelve un 404, pero en el código fuente hay un comentario HTML:
 
@@ -99,7 +99,7 @@ El comentario de la web mencionaba un correo. Busco en `/var/mail`:
 cat /var/mail/camilo/correo.txt
 ```
 
-![Contenido del correo](assets/3.png)
+![Contenido del correo](DockerLabs/Vacaciones/assets/3.png)
 
 Juan le deja su contraseña a camilo en texto plano: `2k84dicb`
 
@@ -116,7 +116,7 @@ su juan
 sudo -l
 ```
 
-![sudo -l juan](assets/4.png)
+![sudo -l juan](DockerLabs/Vacaciones/assets/4.png)
 
 Juan puede ejecutar `/usr/bin/ruby` como root sin contraseña.
 
@@ -128,7 +128,7 @@ whoami
 # root
 ```
 
-![Root](assets/5.png)
+![Root](DockerLabs/Vacaciones/assets/5.png)
 
 ---
 
