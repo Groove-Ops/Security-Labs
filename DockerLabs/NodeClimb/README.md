@@ -62,7 +62,7 @@ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 
 John finds the password:
 
-![John cracked](assets/6.png)
+![John cracked](DockerLabs/NodeClimb/assets/6.png)
 
 The ZIP is then extracted:
 

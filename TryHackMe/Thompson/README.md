@@ -21,7 +21,7 @@ Easy boot2root machine from the BSides Guatemala CTF. Apache Tomcat 8.5.5 runnin
 nmap -sV -sC -Pn <IP>
 ```
 
-![nmap scan](assets/1.png)
+![nmap scan](TryHackMe/Thompson/assets/1.png)
 
 |Port|Service|Version|
 |---|---|---|
@@ -41,7 +41,7 @@ Navigating to `http://<IP>:8080/manager/html` prompts for credentials. Tried def
 
 > **Pentesting note:** Apache Tomcat ships with example credentials documented in its own error pages. When the Manager login fails and redirects to the 403 page, that page itself often contains credential examples in XML format. Always read the full error page before moving on. Default credentials (`tomcat:s3cret`, `admin:admin`, `tomcat:tomcat`) should always be the first attempt on any Tomcat instance.
 
-![Tomcat Manager panel](assets/2.png)
+![Tomcat Manager panel](TryHackMe/Thompson/assets/2.png)
 
 ---
 
@@ -65,7 +65,7 @@ nc -lvnp 4444
 
 Uploaded `shell.war` via the Manager's "WAR file to deploy" section. The deployed application appeared in the list as `/shell`.
 
-![shell deployed in Tomcat Manager](assets/3.png)
+![shell deployed in Tomcat Manager](TryHackMe/Thompson/assets/3.png)
 
 Clicked `/shell` to trigger execution — received reverse connection on the listener.
 
@@ -98,7 +98,7 @@ Checked crontab manually:
 cat /etc/crontab
 ```
 
-![crontab output](assets/4.png)
+![crontab output](TryHackMe/Thompson/assets/4.png)
 
 Found a cronjob running as root every minute:
 
@@ -118,7 +118,7 @@ Waited one minute for cron to execute, then read the flag:
 cat /home/jack/root.txt
 ```
 
-![flags captured](assets/5.png)
+![flags captured](TryHackMe/Thompson/assets/5.png)
 
 ---
 
