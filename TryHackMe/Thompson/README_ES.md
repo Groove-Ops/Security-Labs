@@ -21,7 +21,7 @@ Máquina easy boot2root del CTF BSides Guatemala. Apache Tomcat 8.5.5 corriendo 
 nmap -sV -sC -Pn <IP>
 ```
 
-![nmap scan](TryHackMe/Thompson/assets/1.png)
+![nmap scan](assets/1.png)
 
 |Puerto|Servicio|Versión|
 |---|---|---|
@@ -41,7 +41,7 @@ Navegando a `http://<IP>:8080/manager/html` pide credenciales. Se prueban las cr
 
 > **Nota pentesting:** Apache Tomcat incluye credenciales de ejemplo documentadas en sus propias páginas de error. Cuando el login del Manager falla y redirige al 403, esa misma página suele contener ejemplos de credenciales en formato XML. Siempre leer la página de error completa antes de seguir. Las credenciales por defecto (`tomcat:s3cret`, `admin:admin`, `tomcat:tomcat`) deben ser el primer intento en cualquier instancia de Tomcat.
 
-![Panel Tomcat Manager](TryHackMe/Thompson/assets/2.png)
+![Panel Tomcat Manager](assets/2.png)
 
 ---
 
@@ -65,7 +65,7 @@ nc -lvnp 4444
 
 Se sube `shell.war` desde la sección "WAR file to deploy" del Manager. La aplicación desplegada aparece en la lista como `/shell`.
 
-![shell desplegada en Tomcat Manager](TryHackMe/Thompson/assets/3.png)
+![shell desplegada en Tomcat Manager](assets/3.png)
 
 Se hace click en `/shell` para disparar la ejecución — se recibe la conexión inversa en el listener.
 
@@ -98,7 +98,7 @@ Se revisa el crontab manualmente:
 cat /etc/crontab
 ```
 
-![salida crontab](TryHackMe/Thompson/assets/4.png)
+![salida crontab](assets/4.png)
 
 Se encuentra un cronjob ejecutado como root cada minuto:
 
@@ -118,7 +118,7 @@ Se espera un minuto a que cron lo ejecute y se lee la flag:
 cat /home/jack/root.txt
 ```
 
-![flags obtenidas](TryHackMe/Thompson/assets/5.png)
+![flags obtenidas](assets/5.png)
 
 ---
 
