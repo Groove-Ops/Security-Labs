@@ -15,7 +15,7 @@ Escaneo inicial con Nmap:
 nmap -sS -sC -sV -Pn 10.130.145.232
 ```
 
-![Nmap scan](_drafts/TryHackMe/Ignite/assets/1.png)
+![Nmap scan](assets/1.png)
 
 Puerto descubierto: **80/tcp — HTTP** (Apache 2.4.18, Ubuntu). 
 
@@ -25,7 +25,7 @@ Puerto descubierto: **80/tcp — HTTP** (Apache 2.4.18, Ubuntu).
 
 Al acceder al objetivo encontramos una página de bienvenida de **Fuel CMS** que muestra la **Versión 1.4**.
 
-![Fuel CMS](_drafts/TryHackMe/Ignite/assets/2.png)
+![Fuel CMS](assets/2.png)
 
 La propia página filtra el nombre y la versión del CMS — no se necesita enumeración adicional para identificar la tecnología.
 
@@ -40,7 +40,7 @@ searchsploit fuel cms
 searchsploit -m linux/webapps/47138.py
 ```
 
-![Searchsploit](_drafts/TryHackMe/Ignite/assets/3.png)
+![Searchsploit](assets/3.png)
 
 CVE-2018-16763 afecta a Fuel CMS ≤ 1.4.1 y permite ejecución remota de código sin autenticación a través del parámetro `filter` en `/fuel/pages/select/`.
 
@@ -49,7 +49,7 @@ El exploit (`47138.py`) está escrito en Python 2. Antes de ejecutarlo hay que h
 1. Cambiar la variable `url` por la IP del objetivo
 2. Eliminar la configuración del proxy de Burp (dejar `proxy = {}`)
 
-![Exploit code](_drafts/TryHackMe/Ignite/assets/4.png)
+![Exploit code](assets/4.png)
 
 Ejecutamos el exploit:
 
@@ -81,7 +81,7 @@ Enumeramos los archivos de configuración de la aplicación web:
 cat /var/www/html/fuel/application/config/database.php
 ```
 
-![Database credentials](_drafts/TryHackMe/Ignite/assets/5.png)
+![Database credentials](assets/5.png)
 
 Credenciales encontradas:
 
@@ -98,7 +98,7 @@ su root
 # Contraseña: mememe
 ```
 
-![Root shell](_drafts/TryHackMe/Ignite/assets/6.png)
+![Root shell](assets/6.png)
 
 Shell como **root** obtenida.
 
