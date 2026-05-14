@@ -27,7 +27,7 @@ Resultados:
 gobuster dir -u http://10.129.167.131 -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -t 50
 ```
 
-![Gobuster output](assets/1.png)
+![Gobuster output](TryHackMe/Mr-Robot-CTF/assets/1.png)
 
 Resultados relevantes:
 
@@ -45,7 +45,7 @@ Resultados relevantes:
 
 `/robots.txt` revela dos entradas:
 
-![robots.txt](assets/2.png)
+![robots.txt](TryHackMe/Mr-Robot-CTF/assets/2.png)
 
 ```
 key-1-of-3.txt
@@ -74,7 +74,7 @@ WordPress revela si un usuario existe a través de mensajes de error diferentes:
 
 Probando `elliot` (personaje principal de la serie Mr. Robot) → el servidor confirma que el usuario existe.
 
-![WordPress confirma usuario Elliot](assets/3.png)
+![WordPress confirma usuario Elliot](TryHackMe/Mr-Robot-CTF/assets/3.png)
 
 ### Brute force con Hydra
 

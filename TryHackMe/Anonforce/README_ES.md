@@ -40,7 +40,7 @@ lftp <IP>
 
 Login con usuario `anonymous`, sin contraseña. El FTP expone el sistema de archivos raíz completo — error de configuración grave (el usuario anónimo debería estar enjaulado en un directorio específico, no en `/`).
 
-![lftp navegación y descarga](assets/1.png)
+![lftp navegación y descarga](TryHackMe/Anonforce/assets/1.png)
 
 Navegando el sistema de archivos se encuentra `/notread/`, con permisos `drwxrwxrwx` (world-writable, otra red flag):
 
@@ -75,7 +75,7 @@ gpg2john private.asc > hash
 john hash --wordlist=/usr/share/wordlists/rockyou.txt
 ```
 
-![gpg2john + john crack](assets/2.png)
+![gpg2john + john crack](TryHackMe/Anonforce/assets/2.png)
 
 **Passphrase encontrada:** `xbox360`
 
@@ -112,7 +112,7 @@ echo 'root:$6$07nYFaYf$F4VMaegmz7dKjsTukBLh6cP01iMmL7CiQDt1ycIm6a.bsOIBp0DwXVb9X
 john shadow_root --wordlist=/usr/share/wordlists/rockyou.txt
 ```
 
-![john cracking shadow](assets/3.png)
+![john cracking shadow](TryHackMe/Anonforce/assets/3.png)
 
 **Password root:** `hikari`
 

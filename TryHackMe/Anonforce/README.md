@@ -40,7 +40,7 @@ lftp <IP>
 
 Login with user `anonymous`, no password required. The FTP exposes the entire root filesystem — a critical misconfiguration (the anonymous user should be jailed to a specific directory, not `/`).
 
-![lftp navigation and download](assets/1.png)
+![lftp navigation and download](TryHackMe/Anonforce/assets/1.png)
 
 Browsing the filesystem reveals `/notread/`, with `drwxrwxrwx` permissions (world-writable, another red flag):
 
@@ -75,7 +75,7 @@ gpg2john private.asc > hash
 john hash --wordlist=/usr/share/wordlists/rockyou.txt
 ```
 
-![gpg2john + john crack](assets/2.png)
+![gpg2john + john crack](TryHackMe/Anonforce/assets/2.png)
 
 **Passphrase found:** `xbox360`
 
@@ -112,7 +112,7 @@ echo 'root:$6$07nYFaYf$F4VMaegmz7dKjsTukBLh6cP01iMmL7CiQDt1ycIm6a.bsOIBp0DwXVb9X
 john shadow_root --wordlist=/usr/share/wordlists/rockyou.txt
 ```
 
-![john cracking shadow](assets/3.png)
+![john cracking shadow](TryHackMe/Anonforce/assets/3.png)
 
 **Root password:** `hikari`
 
