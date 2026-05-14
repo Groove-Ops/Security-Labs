@@ -19,6 +19,7 @@ Focus: enumeration discipline, privilege escalation paths, and understanding *wh
 | [Thompson](./TryHackMe/Thompson/)                         | TryHackMe  | Easy        | Apache Tomcat  · WAR reverse shell · Cronjob abuse                                                           | ✅      |
 | [Mr Robot CTF](./TryHackMe/Mr-Robot-CTF/)                 | TryHackMe  | Medium      | Web enumeration, WordPress user enumeration, brute force, malicious plugin (PHP reverse shell), SUID privesc | ✅      |
 | [Pinguinazo](./DockerLabs/Pinguinazo/)                    | DockerLabs | Easy        | SSTI (Jinja2), RCE, Reverse Shell, GTFOBins (Java)                                                           | ✅      |
+| [Ignite](./TryHackMe/Ingite/)                             | TryHackMe  | Easy        | CVE-2018-16763, Fuel CMS RCE, Searchsploit, mkfifo Reverse Shell, Password Reuse                             | ✅      |
 
 
 ## Toolset

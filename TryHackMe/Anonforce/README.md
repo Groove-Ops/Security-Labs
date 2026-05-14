@@ -21,7 +21,7 @@ Easy boot2root machine from the BSides Guatemala CTF. Exposes an FTP service wit
 nmap -sV -sC -Pn <IP>
 ```
 
-![nmap scan](assets/5.png)
+![nmap scan](TryHackMe/Anonforce/assets/5.png)
 
 |Port|Service|Version|
 |---|---|---|
@@ -125,7 +125,7 @@ ssh root@<IP>
 # password: hikari
 ```
 
-![ssh root access](assets/4.png)
+![ssh root access](TryHackMe/Anonforce/assets/4.png)
 
 Direct access as root. Flags collected from `/home/melodias/user.txt` and `/root/root.txt`.
 

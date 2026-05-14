@@ -98,7 +98,7 @@ Se revisa el crontab manualmente:
 cat /etc/crontab
 ```
 
-![salida crontab](assets/4.png)
+![salida crontab](TryHackMe/Thompson/assets/4.png)
 
 Se encuentra un cronjob ejecutado como root cada minuto:
 
@@ -118,7 +118,7 @@ Se espera un minuto a que cron lo ejecute y se lee la flag:
 cat /home/jack/root.txt
 ```
 
-![flags obtenidas](assets/5.png)
+![flags obtenidas](TryHackMe/Thompson/assets/5.png)
 
 ---
 

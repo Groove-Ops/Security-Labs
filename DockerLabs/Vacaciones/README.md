@@ -117,7 +117,7 @@ su juan
 sudo -l
 ```
 
-![sudo -l juan](assets/4.png)
+![sudo -l juan](DockerLabs/Vacaciones/assets/4.png)
 
 Juan can run `/usr/bin/ruby` as root with no password required.
 
@@ -129,7 +129,7 @@ whoami
 # root
 ```
 
-![Root](assets/5.png)
+![Root](DockerLabs/Vacaciones/assets/5.png)
 
 ---
 

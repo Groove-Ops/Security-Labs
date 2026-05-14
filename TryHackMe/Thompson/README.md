@@ -98,7 +98,7 @@ Checked crontab manually:
 cat /etc/crontab
 ```
 
-![crontab output](assets/4.png)
+![crontab output](TryHackMe/Thompson/assets/4.png)
 
 Found a cronjob running as root every minute:
 
@@ -118,7 +118,7 @@ Waited one minute for cron to execute, then read the flag:
 cat /home/jack/root.txt
 ```
 
-![flags captured](assets/5.png)
+![flags captured](TryHackMe/Thompson/assets/5.png)
 
 ---
 

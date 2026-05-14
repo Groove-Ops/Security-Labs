@@ -58,16 +58,16 @@ zip2john secretitopicaron.zip > hash.txt
 john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 ```
 
-![zip2john y hash](assets/4.png)
+![zip2john y hash](DockerLabs/NodeClimb/assets/4.png)
 
 John encuentra la contraseña. Se descomprime el ZIP:
-![John](assets/6.png)
+![John](DockerLabs/NodeClimb/assets/6.png)
 ```bash
 unzip secretitopicaron.zip
 cat password.txt
 ```
 
-![Credenciales](assets/5.png)
+![Credenciales](DockerLabs/NodeClimb/assets/5.png)
 
 El archivo `password.txt` contiene credenciales en texto claro: **usuario y contraseña**.
 
