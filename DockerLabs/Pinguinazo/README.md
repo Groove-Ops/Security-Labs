@@ -73,7 +73,7 @@ With `nc -lvnp 4444` listening on our machine, we inject the following payload:
 
 Shell obtained as user **pinguinazo**:
 
-![Foto2](DockerLabs/Pinguinazo/assets/2.png)
+![Foto2](assets/2.png)
 
 ---
 
@@ -110,7 +110,7 @@ javac Shell.java
 sudo java Shell
 ```
 
-![Foto3](DockerLabs/Pinguinazo/assets/3.png)
+![Foto3](assets/3.png)
 
 Shell as **root** obtained.
 

